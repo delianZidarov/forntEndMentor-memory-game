@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: var(--font);
+  font-weight: 700;
+}
+:root {
+  /* TEXT */
+  --font: "Atkinson Hyperlegible", sans-serif;
+  /* COLORS */
+  --accent-strong: #fda214;
+  --accent-light: #ffb84a;
+  --dark-element-bg: #304859;
+  --mid-element-bg: #6395b8;
+  --light-element-bg: #bcced9;
+  --dark-main-bg: #152938;
+  --text-color-light: #fcfcfc;
+  --display-descriptor: #7191a5;
+  --menu-cover-color: #f2f2f2;
+}

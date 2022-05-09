@@ -1,0 +1,68 @@
+.setup-screen-container form {
+  width: 87vw;
+  padding: 1.5rem;
+  border-radius: 20px;
+  background-color: var(--text-color-light);
+}
+.setup-screen-container form h2 {
+  font-size: 0.95rem;
+  line-height: 1.19rem;
+  color: var(--display-descriptor);
+  margin: 11px;
+}
+.setup-screen-container form div {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.setup-screen-container form div input[type="radio"] {
+  position: fixed;
+  opacity: 0;
+  pointer-events: none;
+}
+.setup-screen-container form div label {
+  flex-grow: 1;
+  font-size: 1rem;
+  line-height: 1.25rem;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 26px;
+  color: var(--text-color-light);
+  background-color: var(--light-element-bg);
+}
+.setup-screen-container form div label:hover {
+  background-color: var(--mid-element-bg);
+}
+.setup-screen-container form div input[type="radio"]:checked + label {
+  background-color: var(--dark-element-bg);
+}
+.setup-screen-container form button {
+  margin-top: 2rem;
+  width: 100%;
+  font-size: 1.125rem;
+  line-height: 1.375rem;
+  border-style: none;
+  border-radius: 26px;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  color: var(--text-color-light);
+  background-color: var(--accent-strong);
+}
+.setup-screen-container form button:hover {
+  background-color: var(--accent-light);
+}
+.setup-screen-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.8rem;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--dark-main-bg);
+}
+
+.logo-container-setup .logo {
+  fill: var(--text-color-light);
+}
