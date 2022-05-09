@@ -1,8 +1,11 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./css/GameControls.css";
 export default function GameControls({ saveBoardState, gameState }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  console.log(window.innerWidth);
+
   function newGame() {
     saveBoardState({});
   }
@@ -18,16 +21,24 @@ export default function GameControls({ saveBoardState, gameState }) {
   function openCloseMenu() {
     setIsMenuOpen(!isMenuOpen);
   }
+
+  useEffect(() => {
+    if (window.innerWidth >= 412) {
+      setIsMenuOpen(true);
+    }
+  }, []);
   return (
-    <div>
+    <div className="game-controls">
       <button onClick={openCloseMenu}>Menu</button>
       {isMenuOpen && (
-        <div className="game-controls-menu">
-          <button onClick={restartGame}>Restart</button>
-          <button onClick={newGame}>New Game</button>
-          <button className="mobile-resume-game" onClick={openCloseMenu}>
-            Resume Game
-          </button>
+        <div className="game-controls-menu-bg">
+          <div className="game-controls-menu">
+            <button onClick={restartGame}>Restart</button>
+            <button onClick={newGame}>New Game</button>
+            <button className="mobile-resume-game" onClick={openCloseMenu}>
+              Resume Game
+            </button>
+          </div>
         </div>
       )}
     </div>
