@@ -17,7 +17,6 @@ function Board({ saveBoardState, gameState }) {
   const [matchedTokens, setMatchedTokens] = useState({});
   const [isGameInProgress, setIsGameInPorgress] = useState(false);
   //STATE CONTROL FUNCTIONS
-  function clearActiveTokens() {}
   function setNextPlayer(currentPlayer, maxSize) {
     let nextPlayer;
     if (currentPlayer + 1 <= maxSize) {
@@ -75,7 +74,6 @@ function Board({ saveBoardState, gameState }) {
       }, 500);
 
       setNextPlayer(currentPlayer, Object.keys(players).length);
-      clearActiveTokens();
     }
   }
   function changeIsGameInProgress() {

@@ -1,0 +1,15 @@
+.game-token {
+  display: inline-block;
+  margin: 1rem;
+  color: pink;
+  background-color: pink;
+}
+.game-token.active {
+  color: red;
+}
+.game-token.matched {
+  color: black;
+}
+.game-token.small {
+  color: green;
+}
