@@ -15,7 +15,7 @@ export default function GameControls({ saveBoardState, gameState }) {
     for (let i = 1; i <= Object.keys(gameState.players).length; i++) {
       players[`player${i}`] = { score: 0, moves: 0 };
     }
-    saveBoardState({ players, boardSettings });
+    saveBoardState({ players, boardSettings, currentBoard: [] });
     openCloseMenu();
   }
   function openCloseMenu() {

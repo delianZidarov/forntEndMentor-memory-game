@@ -8,7 +8,8 @@ function App() {
   //STATE
   const defaultState = {
     players: { player1: { score: 0, moves: 0 } },
-    boardSettings: { type: "icon", size: 4 },
+    boardSettings: { type: "icons", size: "4" },
+    currentBoard: [],
   };
 
   const [gameState, setGameState] = useState(defaultState);

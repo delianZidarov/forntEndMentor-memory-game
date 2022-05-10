@@ -13,7 +13,6 @@ function SetupScreen({ setupGame }) {
   //HANDLE FORM ACTIONS
   function handleRadioSelection(event) {
     setFormData({ ...formData, [event.target.name]: event.target.value });
-    console.log(formData);
   }
   function handleSubmit(event) {
     event.preventDefault();
@@ -25,8 +24,7 @@ function SetupScreen({ setupGame }) {
       type: formData["game-theme"],
       size: formData["game-size"],
     };
-    console.log({ players, boardSettings });
-    setupGame({ players, boardSettings });
+    setupGame({ players, boardSettings, currentBoard: [] });
   }
   return (
     <section className="setup-screen-container">
