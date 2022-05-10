@@ -23,10 +23,15 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "./css/GameTokens.css";
 import Token from "./Token.js";
-function GameTokens({ gameState, saveBoardState, onTokenClick }) {
+function GameTokens({
+  gameState,
+  saveBoardState,
+  onTokenClick,
+  turnActions,
+  matchedTokens,
+}) {
   const { size, type } = gameState.boardSettings;
 
-  const tokens = getTokenCollection(type, size);
   const gameBoardState =
     gameState.currentBoard.length > 0
       ? gameState.currentBoard
@@ -122,7 +127,15 @@ function GameTokens({ gameState, saveBoardState, onTokenClick }) {
     <div>
       {/* <Token icon={gameBoardState[0]} tokenId={0} onTokenClick={onTokenClick} /> */}
       {gameBoardState.map((icon, i) => (
-        <Token icon={icon} tokenId={i} onTokenClick={onTokenClick} />
+        <Token
+          icon={icon}
+          tokenId={i}
+          onTokenClick={onTokenClick}
+          type={type}
+          turnActions={turnActions}
+          matchedTokens={matchedTokens}
+          size={size}
+        />
       ))}
     </div>
   );

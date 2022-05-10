@@ -14,9 +14,10 @@ function Board({ saveBoardState, gameState }) {
   const [gameMovesLeft, setGameMovesLeft] = useState(
     gameState.boardSettings.size ** 2 / 2
   );
+  const [matchedTokens, setMatchedTokens] = useState({});
   const [isGameInProgress, setIsGameInPorgress] = useState(false);
-  console.log(gameMovesLeft);
   //STATE CONTROL FUNCTIONS
+  function clearActiveTokens() {}
   function setNextPlayer(currentPlayer, maxSize) {
     let nextPlayer;
     if (currentPlayer + 1 <= maxSize) {
@@ -27,7 +28,6 @@ function Board({ saveBoardState, gameState }) {
     setCurrentPlayer(nextPlayer);
   }
   function onTokenClick(event) {
-    console.log("TOKEN CLICK EVENT", event.currentTarget.id);
     if (isGameInProgress === false) {
       changeIsGameInProgress();
     }
@@ -39,7 +39,6 @@ function Board({ saveBoardState, gameState }) {
       setTurnActions({ ...turnActions, secondGuess: event.currentTarget.id });
       secondGuess = event.currentTarget.id;
     }
-    console.log("TURNS ACTIONS", turnActions.firstGuess && secondGuess);
     if (turnActions.firstGuess && secondGuess) {
       const firstIndex = parseInt(turnActions.firstGuess);
       const secondIndex = parseInt(secondGuess);
@@ -55,6 +54,11 @@ function Board({ saveBoardState, gameState }) {
           players: updatedPlayers,
         });
         setGameMovesLeft(gameMovesLeft - 1);
+        setMatchedTokens({
+          ...matchedTokens,
+          [turnActions.firstGuess]: 1,
+          [secondGuess]: 1,
+        });
       }
       let updatedPlayersMoves = { ...players };
       updatedPlayersMoves[`player${currentPlayer}`].moves += 1;
@@ -63,12 +67,15 @@ function Board({ saveBoardState, gameState }) {
         boardSettings,
         players: updatedPlayersMoves,
       });
-      setTurnActions({
-        firstGuess: false,
-        secondGuess: false,
-      });
-      setNextPlayer(currentPlayer, players.length);
-      console.log("end of onCLick", updatedPlayersMoves);
+      setTimeout(() => {
+        setTurnActions({
+          firstGuess: false,
+          secondGuess: false,
+        });
+      }, 500);
+
+      setNextPlayer(currentPlayer, Object.keys(players).length);
+      clearActiveTokens();
     }
   }
   function changeIsGameInProgress() {
@@ -88,6 +95,8 @@ function Board({ saveBoardState, gameState }) {
           gameState={gameState}
           saveBoardState={saveBoardState}
           onTokenClick={onTokenClick}
+          turnActions={turnActions}
+          matchedTokens={matchedTokens}
         />
       </div>
     </div>
