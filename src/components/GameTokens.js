@@ -124,7 +124,7 @@ function GameTokens({
     ))
   );
   return (
-    <div>
+    <div className={`game-token-grid ${size === "4" ? "four" : "six"}`}>
       {/* <Token icon={gameBoardState[0]} tokenId={0} onTokenClick={onTokenClick} /> */}
       {gameBoardState.map((icon, i) => (
         <Token
@@ -135,6 +135,7 @@ function GameTokens({
           turnActions={turnActions}
           matchedTokens={matchedTokens}
           size={size}
+          key={i}
         />
       ))}
     </div>

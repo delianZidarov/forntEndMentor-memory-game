@@ -1,10 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import "./css/GameControls.css";
-export default function GameControls({ saveBoardState, gameState }) {
+export default function GameControls({
+  saveBoardState,
+  gameState,
+  resetBoardActionInformation,
+}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  console.log(window.innerWidth);
 
   function newGame() {
     saveBoardState({});
@@ -16,8 +18,10 @@ export default function GameControls({ saveBoardState, gameState }) {
       players[`player${i}`] = { score: 0, moves: 0 };
     }
     saveBoardState({ players, boardSettings, currentBoard: [] });
+    resetBoardActionInformation();
     openCloseMenu();
   }
+
   function openCloseMenu() {
     setIsMenuOpen(!isMenuOpen);
   }

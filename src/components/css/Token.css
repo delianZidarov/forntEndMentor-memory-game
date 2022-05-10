@@ -1,15 +1,21 @@
 .game-token {
-  display: inline-block;
-  margin: 1rem;
-  color: pink;
-  background-color: pink;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+
+  font-size: 1.5rem;
+  border-radius: 50%;
+  user-select: none;
+  color: var(--dark-element-bg);
+  background-color: var(--dark-element-bg);
 }
 .game-token.active {
-  color: red;
+  color: var(--text-color-light);
+  background-color: var(--accent-strong);
 }
 .game-token.matched {
-  color: black;
-}
-.game-token.small {
-  color: green;
+  color: var(--text-color-light);
+  background-color: var(--light-element-bg);
 }

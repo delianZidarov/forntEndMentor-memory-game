@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Logo from "./Logo.js";
 import GameControls from "./GameControls.js";
 import GameTokens from "./GameTokens.js";
+import GameOverScreen from "./GameOverScreen.js";
 import "./css/Board.css";
 function Board({ saveBoardState, gameState }) {
   const { players, boardSettings, currentBoard } = gameState;
@@ -79,14 +80,28 @@ function Board({ saveBoardState, gameState }) {
   function changeIsGameInProgress() {
     setIsGameInPorgress(!isGameInProgress);
   }
-
+  function resetBoardActionInformation() {
+    setTurnActions({
+      firstGuess: false,
+      secondGuess: false,
+    });
+    setGameMovesLeft(gameState.boardSettings.size ** 2 / 2);
+    setMatchedTokens({});
+    setCurrentPlayer(1);
+    setIsGameInPorgress(false);
+  }
+  console.log("MOVES LEFT", gameMovesLeft);
   return (
     <div className="game-board-container">
       <div className="logo-container">
         <Logo />
       </div>
       <div className="game-controls-container">
-        <GameControls saveBoardState={saveBoardState} gameState={gameState} />
+        <GameControls
+          saveBoardState={saveBoardState}
+          gameState={gameState}
+          resetBoardActionInformation={resetBoardActionInformation}
+        />
       </div>
       <div className="game-tokens-display">
         <GameTokens
@@ -97,6 +112,15 @@ function Board({ saveBoardState, gameState }) {
           matchedTokens={matchedTokens}
         />
       </div>
+      {gameMovesLeft === 0 && (
+        <div className="game-end-pop-up">
+          <GameOverScreen
+            saveBoardState={saveBoardState}
+            gameState={gameState}
+            resetBoardActionInformation={resetBoardActionInformation}
+          />
+        </div>
+      )}
     </div>
   );
 }
